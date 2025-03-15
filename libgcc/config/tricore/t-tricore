@@ -1,0 +1,35 @@
+LIB1ASMSRC = tricore/lib1funcs.S
+LIB1ASMFUNCS = \
+	_divmodsi4 \
+	_udivmodsi4 \
+	_rstcntxt \
+	_bswapsi2 \
+	_fixsfsi \
+	_fixunssfsi \
+	_paritysi2 \
+	_ashldi3 \
+	_ashrdi3 \
+	_lshrdi3 \
+	memcpy \
+	memset \
+	memcmp
+
+
+LIB2FUNCS_EXCLUDE = \
+        _divdi3 _moddi3 _divmoddi4 \
+        _udivdi3 _umoddi3 _udivmoddi4 _clzsi2 \
+        _sf_to_si _sf_to_usi
+
+LIB2ADD += \
+    $(srcdir)/config/tricore/sincosl.c \
+    $(srcdir)/config/tricore/udiv6432.c \
+    $(srcdir)/config/tricore/divdi3.c \
+    $(srcdir)/config/tricore/moddi3.c \
+    $(srcdir)/config/tricore/divmoddi4.c \
+    $(srcdir)/config/tricore/udivdi3.c \
+    $(srcdir)/config/tricore/umoddi3.c \
+    $(srcdir)/config/tricore/udivmoddi4.c \
+    $(srcdir)/config/tricore/memmove.c
+
+
+EXTRA_PARTS = crtbegin.o crtend.o crti.o crtn.o

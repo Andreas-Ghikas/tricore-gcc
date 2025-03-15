@@ -97,7 +97,7 @@ static const char *go_importcfg = NULL;
 static bool
 go_langhook_init (void)
 {
-  build_common_tree_nodes (false);
+  build_common_tree_nodes (false false);
 
   /* We must create the gogo IR after calling build_common_tree_nodes
      (because Gogo::define_builtin_function_trees refers indirectly
