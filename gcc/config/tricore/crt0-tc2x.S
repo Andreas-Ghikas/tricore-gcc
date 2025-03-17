@@ -61,7 +61,7 @@ SCU_WDTSCON1    = 0xf00362AC
 
 
 /* Define the Derivate Name as a hexvalue. This value
- * is built-in defined in tricore-c.c (from tricore-devices.c)
+ * is built-in defined in tricore-c.cc (from tricore-devices.cc)
  * the derivate number as a hexvalue (e.g. TC1796 => 0x1796
  * This name will be used in the memory.x Memory description to
  * to confirm that the crt0.o and the memory.x will be get from

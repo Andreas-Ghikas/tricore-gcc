@@ -83,25 +83,25 @@ LIBS +=
 
 # Compile extra tricore objects.  More individual dependencies follow below.
 
-tricore-c.o: $(srcdir)/config/tricore/tricore-c.c $(CONFIG_H) $(SYSTEM_H) coretypes.h \
+tricore-c.o: $(srcdir)/config/tricore/tricore-c.cc $(CONFIG_H) $(SYSTEM_H) coretypes.h \
   $(TM_H) $(CPPLIB_H) $(TREE_H) $(C_PRAGMA_H) $(C_COMMON_H) $(TARGET_H) $(INPUT_H) output.h $(GGC_H) $(TM_P_H)
 	$(COMPILER) -c $(ALL_COMPILERFLAGS) $(ALL_CPPFLAGS) $(INCLUDES) \
-		$(srcdir)/config/tricore/tricore-c.c 
+		$(srcdir)/config/tricore/tricore-c.cc 
 
-tricore-log.o: $(srcdir)/config/tricore/tricore-log.c $(CONFIG_H) $(SYSTEM_H) coretypes.h \
+tricore-log.o: $(srcdir)/config/tricore/tricore-log.cc $(CONFIG_H) $(SYSTEM_H) coretypes.h \
   $(TM_H) $(CPPLIB_H) $(TREE_H) $(C_PRAGMA_H) $(C_COMMON_H) $(TARGET_H) $(INPUT_H) output.h $(GGC_H) $(TM_P_H)
 	$(COMPILER) -c $(ALL_COMPILERFLAGS) $(ALL_CPPFLAGS) $(INCLUDES) \
-		$(srcdir)/config/tricore/tricore-log.c
+		$(srcdir)/config/tricore/tricore-log.cc
 
-driver-tricore.o: $(srcdir)/config/tricore/driver-tricore.c \
+driver-tricore.o: $(srcdir)/config/tricore/driver-tricore.cc \
   $(CONFIG_H) $(SYSTEM_H) $(DIAGNOSTIC_H) $(GCC_H) coretypes.h $(TM_H)
 	$(COMPILER) -c $(ALL_COMPILERFLAGS) $(ALL_CPPFLAGS) $(INCLUDES) \
-		$(srcdir)/config/tricore/driver-tricore.c 
+		$(srcdir)/config/tricore/driver-tricore.cc 
 
-tricore-devices.o: $(srcdir)/config/tricore/tricore-devices.c \
+tricore-devices.o: $(srcdir)/config/tricore/tricore-devices.cc \
   $(CONFIG_H) $(SYSTEM_H) $(DIAGNOSTIC_H) coretypes.h $(TM_H)
 	$(COMPILER) -c $(ALL_COMPILERFLAGS) $(ALL_CPPFLAGS) $(INCLUDES) \
-		$(srcdir)/config/tricore/tricore-devices.c 
+		$(srcdir)/config/tricore/tricore-devices.cc 
 
 
 # Additional individual dependencies on GCC and front end files
