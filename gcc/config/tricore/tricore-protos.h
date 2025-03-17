@@ -218,7 +218,7 @@ do {                                                                    \
  } while(0)
 
 
-/* From tricore-log.c */
+/* From tricore-log.cc */
 
 #define tricore_dump(...) tricore_vdump (NULL, __FUNCTION__, __VA_ARGS__)
 #define tricore_edump(...) tricore_vdump (stderr, __FUNCTION__, __VA_ARGS__)

@@ -272,7 +272,7 @@ tricore_log_vadump (FILE *file, const char *caller, va_list ap)
 }
 
 
-/* Called from tricore.c:tricore_option_override().
+/* Called from tricore.cc:tricore_option_override().
    Parse argument of -mlog= and set respective fields in tricore_log.  */
 
 void
