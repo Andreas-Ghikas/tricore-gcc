@@ -2652,7 +2652,7 @@ tric_handle_asection_attribute (tree *node, tree name ATTRIBUTE_UNUSED,
 
 /* Implement `TARGET_ATTRIBUTE_TABLE' */
 
-const struct attribute_spec tric_attribute_table[] =
+TARGET_GNU_ATTRIBUTES (tric_attribute_table,
   {
     /* { name, min_len, max_len,
        decl_req, type_req, fn_type_req, handler, affects_type_identity } */
@@ -2671,9 +2671,8 @@ const struct attribute_spec tric_attribute_table[] =
     { TRIC_ATTR_SMALL,              0, 0,
       true,  false, false, false, tric_handle_decl_attribute, NULL },
     { TRIC_ATTR_ASECTION,            1, 3,
-      true,  false,  false, false, tric_handle_asection_attribute, NULL },
-    { NULL,                      0, 0, false, false, false, false, NULL, NULL }
-  };
+      true,  false,  false, false, tric_handle_asection_attribute, NULL }
+  });
 
 static void
 tric_section_flags_from_flags (char *f, unsigned int flags)
@@ -5758,7 +5757,7 @@ tric_offset_for_mode_p (rtx offset, enum machine_mode mode)
 /* Implement `TARGET_LEGITIMATE_ADDRESS_P' */
 
 static bool
-tric_legitimate_address_p (enum machine_mode mode, rtx x, bool strict)
+tric_legitimate_address_p (machine_mode mode, rtx x, bool strict, code_helper = ERROR_MARK)
 {
   int ok = 0;
   int bitsize = BLKmode == mode ? 0 : GET_MODE_BITSIZE (mode);
@@ -9016,7 +9015,7 @@ tric_def_one_section (const char *name, const char *s_flags, int align,
    equips the generated section with this callback function */
 
 static void
-tric_output_section_asm_op (const void* data)
+tric_output_section_asm_op (const char* data)
 {
   unsigned int i;
   const tric_section_t *sec = (const tric_section_t*) data;
@@ -9149,7 +9148,7 @@ tric_asm_init_sections (void)
           tsec = tric_insert_section (ACONCAT ((name, suffix, NULL)),
                                       s_flags, align, BUILTINS_LOCATION);
           sec = get_unnamed_section (flags,
-                                     tric_output_section_asm_op, tsec);
+                                     tric_output_section_asm_op, (char *)tsec);
 
           /* Replace sections known to varasm by our own versions.
              but only the unaligned version */
@@ -9918,8 +9917,8 @@ static rtx_insn *
 tric_md_asm_adjust (vec<rtx>& outputs ATTRIBUTE_UNUSED, vec<rtx>& inputs ATTRIBUTE_UNUSED,
 		    vec<machine_mode>& input_modes ATTRIBUTE_UNUSED,
 		    vec<const char *>& constraints ATTRIBUTE_UNUSED,
-		    vec<rtx>& clobbers ATTRIBUTE_UNUSED,
-		    HARD_REG_SET& clobbered_regs ATTRIBUTE_UNUSED)
+		    vec<rtx>& uses ATTRIBUTE_UNUSED, vec<rtx>& clobbers ATTRIBUTE_UNUSED,
+		    HARD_REG_SET& clobbered_regs ATTRIBUTE_UNUSED, location_t loc ATTRIBUTE_UNUSED)
 
 {
   return NULL;
