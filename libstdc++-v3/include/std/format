@@ -3638,7 +3638,7 @@ namespace __format
       // If args are not packed then the number of args is in _M_unpacked_size
       // and _M_packed_size is zero.
       uint64_t _M_packed_size : 4;
-      uint64_t _M_unpacked_size : 60;
+      uint64_t _M_unpacked_size : 30;
 
       union {
 	const _Format_arg_val* _M_values; // Active when _M_packed_size != 0
